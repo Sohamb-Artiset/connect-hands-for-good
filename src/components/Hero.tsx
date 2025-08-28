@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Search, Heart, Users, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-volunteers.jpg";
 
 const Hero = () => {
@@ -39,20 +40,24 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button 
-              size="lg" 
-              className="bg-highlight hover:bg-highlight/90 text-highlight-foreground px-8 py-6 text-lg font-semibold shadow-glow"
-            >
-              <Search className="w-5 h-5 mr-3" />
-              Find Opportunities
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold backdrop-blur-sm"
-            >
-              Register Your NGO
-            </Button>
+            <Link to="/opportunities">
+              <Button 
+                size="lg" 
+                className="bg-highlight hover:bg-highlight/90 text-highlight-foreground px-8 py-6 text-lg font-semibold shadow-glow"
+              >
+                <Search className="w-5 h-5 mr-3" />
+                Find Opportunities
+              </Button>
+            </Link>
+            <Link to="/organizations">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold backdrop-blur-sm"
+              >
+                Register Your NGO
+              </Button>
+            </Link>
           </div>
 
           {/* Stats */}

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Menu, User } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +11,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
             <div className="w-10 h-10 bg-gradient-hero rounded-full flex items-center justify-center">
               <Heart className="w-6 h-6 text-white" />
             </div>
@@ -18,33 +19,37 @@ const Header = () => {
               <h1 className="text-xl font-bold text-foreground">VolunteerConnect</h1>
               <p className="text-xs text-muted-foreground">Making impact together</p>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
+            <Link to="/opportunities" className="text-foreground hover:text-primary transition-colors">
               Find Opportunities
-            </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
+            </Link>
+            <Link to="/organizations" className="text-foreground hover:text-primary transition-colors">
               Organizations
-            </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
+            </Link>
+            <Link to="/about" className="text-foreground hover:text-primary transition-colors">
               About
-            </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
+            </Link>
+            <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
               Contact
-            </a>
+            </Link>
           </nav>
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="sm">
-              <User className="w-4 h-4 mr-2" />
-              Sign In
-            </Button>
-            <Button variant="default" size="sm" className="bg-gradient-hero hover:opacity-90">
-              Get Started
-            </Button>
+            <Link to="/signin">
+              <Button variant="ghost" size="sm">
+                <User className="w-4 h-4 mr-2" />
+                Sign In
+              </Button>
+            </Link>
+            <Link to="/get-started">
+              <Button variant="default" size="sm" className="bg-gradient-hero hover:opacity-90">
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -62,26 +67,30 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-border">
             <nav className="flex flex-col gap-4 pt-4">
-              <a href="#" className="text-foreground hover:text-primary transition-colors">
+              <Link to="/opportunities" className="text-foreground hover:text-primary transition-colors">
                 Find Opportunities
-              </a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors">
+              </Link>
+              <Link to="/organizations" className="text-foreground hover:text-primary transition-colors">
                 Organizations
-              </a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors">
+              </Link>
+              <Link to="/about" className="text-foreground hover:text-primary transition-colors">
                 About
-              </a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors">
+              </Link>
+              <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
                 Contact
-              </a>
+              </Link>
               <div className="flex flex-col gap-2 mt-4">
-                <Button variant="ghost" size="sm" className="justify-start">
-                  <User className="w-4 h-4 mr-2" />
-                  Sign In
-                </Button>
-                <Button variant="default" size="sm" className="bg-gradient-hero hover:opacity-90">
-                  Get Started
-                </Button>
+                <Link to="/signin">
+                  <Button variant="ghost" size="sm" className="justify-start w-full">
+                    <User className="w-4 h-4 mr-2" />
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to="/get-started">
+                  <Button variant="default" size="sm" className="bg-gradient-hero hover:opacity-90 w-full">
+                    Get Started
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>
