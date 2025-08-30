@@ -45,7 +45,7 @@ const inquiryTypes = [
 
 const Contact = () => {
   return (
-    <div>
+    <>
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 via-accent-light/20 to-highlight-light/10">
           <div className="container mx-auto px-4 text-center">
@@ -244,8 +244,7 @@ const Contact = () => {
             </div>
           </div>
         </section>
-      </div>
-    </div>
+    </>
   );
 };
 
