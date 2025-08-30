@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,10 +8,8 @@ import { Mail, Lock, Building, Shield, Users, Target } from "lucide-react";
 
 const NGOSignIn = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-accent/5 via-primary/10 to-highlight/5">
-      <Header />
-      
-      <main className="container mx-auto px-4 py-12">
+    <div className="bg-gradient-to-br from-accent/5 via-primary/10 to-highlight/5">
+      <div className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Side - Welcome Content for NGOs */}
@@ -143,7 +140,7 @@ const NGOSignIn = () => {
             </Card>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };

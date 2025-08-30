@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -61,10 +60,8 @@ const mockOrganizations = [
 
 const Organizations = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-accent-light/20 to-highlight-light/10">
-      <Header />
-      
-      <main className="container mx-auto px-4 py-12">
+    <div className="bg-gradient-to-br from-background via-accent-light/20 to-highlight-light/10">
+      <div className="container mx-auto px-4 py-12">
         {/* Page Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -209,7 +206,7 @@ const Organizations = () => {
             Register Your NGO
           </Button>
         </div>
-      </main>
+      </div>
     </div>
   );
 };

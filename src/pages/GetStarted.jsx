@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -23,10 +22,8 @@ const interests = [
 
 const GetStarted = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-accent-light/10 to-highlight-light/5">
-      <Header />
-      
-      <main className="container mx-auto px-4 py-12">
+    <div className="bg-gradient-to-br from-primary/5 via-accent-light/10 to-highlight-light/5">
+      <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
@@ -283,7 +280,7 @@ const GetStarted = () => {
             </Card>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };

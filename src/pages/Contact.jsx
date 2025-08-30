@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -46,10 +45,7 @@ const inquiryTypes = [
 
 const Contact = () => {
   return (
-    <div className="min-h-screen">
-      <Header />
-      
-      <main>
+    <div>
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 via-accent-light/20 to-highlight-light/10">
           <div className="container mx-auto px-4 text-center">
@@ -248,7 +244,7 @@ const Contact = () => {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 };

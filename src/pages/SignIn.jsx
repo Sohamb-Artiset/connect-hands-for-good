@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,10 +8,8 @@ import { Mail, Lock, Heart, Users, Building } from "lucide-react";
 
 const SignIn = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-accent-light/10 to-highlight-light/5">
-      <Header />
-      
-      <main className="container mx-auto px-4 py-12">
+    <div className="bg-gradient-to-br from-primary/5 via-accent-light/10 to-highlight-light/5">
+      <div className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Side - Welcome Content */}
@@ -140,7 +137,7 @@ const SignIn = () => {
             </Card>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };

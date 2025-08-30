@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Users, Target, Shield, Award, Globe } from "lucide-react";
@@ -35,10 +34,7 @@ const values = [
 
 const About = () => {
   return (
-    <div className="min-h-screen">
-      <Header />
-      
-      <main>
+    <div>
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 via-accent-light/20 to-highlight-light/10">
           <div className="container mx-auto px-4 text-center">
@@ -184,7 +180,7 @@ const About = () => {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 };
