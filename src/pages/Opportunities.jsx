@@ -143,7 +143,8 @@ const Opportunities = () => {
                 </div>
               </CardContent>
             </Card>
-          ))}
+            ))
+          )}
         </div>
 
         {/* Load More */}
