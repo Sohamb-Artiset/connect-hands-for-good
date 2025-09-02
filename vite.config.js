@@ -1,28 +1,21 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-  const plugins = [
+export default defineConfig(({ mode }) => ({
+  server: {
+    host: "::",
+    port: 8080,
+  },
+  plugins: [
     react(),
-  ];
-
-  if (mode === 'development') {
-    // Add development-specific plugins here if needed
-    // plugins.push(someDevPlugin());
-  }
-
-  return {
-    server: {
-      host: "::",
-      port: 8080,
+    mode === 'development' && componentTagger(),
+  ].filter(Boolean),
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
     },
-    plugins: plugins,
-    resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "./src"),
-      },
-    },
-  };
-});
+  },
+}));
