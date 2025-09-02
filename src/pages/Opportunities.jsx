@@ -2,51 +2,32 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, MapPin, Clock, Users, Heart } from "lucide-react";
-
-const mockOpportunities = [
-  {
-    id: 1,
-    title: "Community Food Bank Volunteer",
-    organization: "City Food Bank",
-    location: "Downtown Community Center",
-    date: "Every Saturday",
-    duration: "3-4 hours",
-    participants: 12,
-    maxParticipants: 15,
-    description: "Help sort and distribute food to families in need. Perfect for individuals or groups looking to make a direct impact.",
-    skills: ["Organization", "Customer Service", "Physical Work"],
-    category: "Food Security"
-  },
-  {
-    id: 2,
-    title: "Environmental Cleanup Drive",
-    organization: "Green Earth Initiative",
-    location: "Riverside Park",
-    date: "March 15, 2025",
-    duration: "2-3 hours",
-    participants: 25,
-    maxParticipants: 50,
-    description: "Join us for a community cleanup to preserve our local environment and waterways.",
-    skills: ["Outdoors", "Environmental Awareness"],
-    category: "Environment"
-  },
-  {
-    id: 3,
-    title: "Youth Mentorship Program",
-    organization: "Future Leaders Foundation",
-    location: "Lincoln High School",
-    date: "Weekdays 4-6 PM",
-    duration: "2 hours",
-    participants: 8,
-    maxParticipants: 20,
-    description: "Mentor high school students in academic and life skills. Long-term commitment preferred.",
-    skills: ["Teaching", "Communication", "Leadership"],
-    category: "Education"
-  }
-];
+import { Search, MapPin, Clock, Users, Heart, Loader2 } from "lucide-react";
+import { useOpportunities } from "@/hooks/useOpportunities";
 
 const Opportunities = () => {
+  const { data: opportunities, isLoading, error } = useOpportunities();
+
+  if (isLoading) {
+    return (
+      <div className="bg-gradient-to-br from-background via-accent-light/20 to-highlight-light/10 min-h-screen">
+        <div className="container mx-auto px-4 py-12 flex justify-center items-center">
+          <Loader2 className="h-8 w-8 animate-spin" />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="bg-gradient-to-br from-background via-accent-light/20 to-highlight-light/10 min-h-screen">
+        <div className="container mx-auto px-4 py-12 text-center">
+          <p className="text-destructive">Error loading opportunities: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-gradient-to-br from-background via-accent-light/20 to-highlight-light/10">
       <div className="container mx-auto px-4 py-12">
@@ -109,7 +90,7 @@ const Opportunities = () => {
 
         {/* Results */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {mockOpportunities.map((opportunity) => (
+          {opportunities?.map((opportunity) => (
             <Card key={opportunity.id} className="group hover:shadow-glow transition-all duration-300 border-0 bg-gradient-card overflow-hidden">
               <CardHeader className="pb-4">
                 <div className="flex justify-between items-start mb-3">

@@ -14,7 +14,187 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      applications: {
+        Row: {
+          applied_at: string
+          id: string
+          message: string | null
+          opportunity_id: string
+          status: string | null
+          user_id: string
+        }
+        Insert: {
+          applied_at?: string
+          id?: string
+          message?: string | null
+          opportunity_id: string
+          status?: string | null
+          user_id: string
+        }
+        Update: {
+          applied_at?: string
+          id?: string
+          message?: string | null
+          opportunity_id?: string
+          status?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_opportunity_id_fkey"
+            columns: ["opportunity_id"]
+            isOneToOne: false
+            referencedRelation: "opportunities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      opportunities: {
+        Row: {
+          category: Database["public"]["Enums"]["opportunity_category"]
+          created_at: string
+          current_participants: number | null
+          date: string
+          description: string
+          duration: string
+          id: string
+          location: string
+          max_participants: number
+          organization_id: string
+          required_skills: string[] | null
+          status: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: Database["public"]["Enums"]["opportunity_category"]
+          created_at?: string
+          current_participants?: number | null
+          date: string
+          description: string
+          duration: string
+          id?: string
+          location: string
+          max_participants?: number
+          organization_id: string
+          required_skills?: string[] | null
+          status?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["opportunity_category"]
+          created_at?: string
+          current_participants?: number | null
+          date?: string
+          description?: string
+          duration?: string
+          id?: string
+          location?: string
+          max_participants?: number
+          organization_id?: string
+          required_skills?: string[] | null
+          status?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "opportunities_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      organizations: {
+        Row: {
+          address: string | null
+          created_at: string
+          description: string | null
+          email: string | null
+          id: string
+          logo_url: string | null
+          name: string
+          phone: string | null
+          updated_at: string
+          verified: boolean | null
+          website: string | null
+        }
+        Insert: {
+          address?: string | null
+          created_at?: string
+          description?: string | null
+          email?: string | null
+          id?: string
+          logo_url?: string | null
+          name: string
+          phone?: string | null
+          updated_at?: string
+          verified?: boolean | null
+          website?: string | null
+        }
+        Update: {
+          address?: string | null
+          created_at?: string
+          description?: string | null
+          email?: string | null
+          id?: string
+          logo_url?: string | null
+          name?: string
+          phone?: string | null
+          updated_at?: string
+          verified?: boolean | null
+          website?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          email: string | null
+          first_name: string | null
+          id: string
+          last_name: string | null
+          location: string | null
+          phone: string | null
+          skills: string[] | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          email?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          location?: string | null
+          phone?: string | null
+          skills?: string[] | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          email?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          location?: string | null
+          phone?: string | null
+          skills?: string[] | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +203,15 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      opportunity_category:
+        | "Food Security"
+        | "Environment"
+        | "Education"
+        | "Healthcare"
+        | "Youth Development"
+        | "Community Development"
+        | "Animal Welfare"
+        | "Disaster Relief"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +338,17 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      opportunity_category: [
+        "Food Security",
+        "Environment",
+        "Education",
+        "Healthcare",
+        "Youth Development",
+        "Community Development",
+        "Animal Welfare",
+        "Disaster Relief",
+      ],
+    },
   },
 } as const
