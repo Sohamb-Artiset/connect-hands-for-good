@@ -90,59 +90,72 @@ const Opportunities = () => {
 
         {/* Results */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {opportunities?.map((opportunity) => (
-            <Card key={opportunity.id} className="group hover:shadow-glow transition-all duration-300 border-0 bg-gradient-card overflow-hidden">
-              <CardHeader className="pb-4">
-                <div className="flex justify-between items-start mb-3">
-                  <Badge className="bg-gradient-accent text-highlight-foreground">
-                    {opportunity.category}
-                  </Badge>
-                  <div className="flex items-center text-sm text-muted-foreground">
-                    <Users className="w-4 h-4 mr-1" />
-                    {opportunity.participants}/{opportunity.maxParticipants}
-                  </div>
-                </div>
-                <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                  {opportunity.title}
-                </CardTitle>
-                <div className="text-accent font-semibold">{opportunity.organization}</div>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center text-muted-foreground">
-                    <MapPin className="w-4 h-4 mr-2 text-accent" />
-                    {opportunity.location}
-                  </div>
-                  <div className="flex items-center text-muted-foreground">
-                    <Clock className="w-4 h-4 mr-2 text-accent" />
-                    {opportunity.date} • {opportunity.duration}
-                  </div>
-                </div>
-                
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {opportunity.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {opportunity.skills.map((skill) => (
-                    <Badge key={skill} variant="outline" className="text-xs">
-                      {skill}
+          {isLoading ? (
+            <div className="col-span-full text-center py-8">
+              <div className="text-muted-foreground">Loading opportunities...</div>
+            </div>
+          ) : error ? (
+            <div className="col-span-full text-center py-8">
+              <div className="text-destructive">Error loading opportunities. Please try again.</div>
+            </div>
+          ) : opportunities?.length === 0 ? (
+            <div className="col-span-full text-center py-8">
+              <div className="text-muted-foreground">No opportunities found.</div>
+            </div>
+          ) : (
+            opportunities?.map((opportunity) => (
+              <Card key={opportunity.id} className="group hover:shadow-glow transition-all duration-300 border-0 bg-gradient-card overflow-hidden">
+                <CardHeader className="pb-4">
+                  <div className="flex justify-between items-start mb-3">
+                    <Badge className="bg-gradient-accent text-highlight-foreground">
+                      {opportunity.category}
                     </Badge>
-                  ))}
-                </div>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Users className="w-4 h-4 mr-1" />
+                      {opportunity.participants}/{opportunity.maxParticipants}
+                    </div>
+                  </div>
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    {opportunity.title}
+                  </CardTitle>
+                  <div className="text-accent font-semibold">{opportunity.organization}</div>
+                </CardHeader>
                 
-                <div className="flex gap-2">
-                  <Button className="flex-1 bg-gradient-hero hover:opacity-90">
-                    <Heart className="w-4 h-4 mr-2" />
-                    Apply Now
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    Learn More
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                <CardContent>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center text-muted-foreground">
+                      <MapPin className="w-4 h-4 mr-2 text-accent" />
+                      {opportunity.location}
+                    </div>
+                    <div className="flex items-center text-muted-foreground">
+                      <Clock className="w-4 h-4 mr-2 text-accent" />
+                      {opportunity.date} • {opportunity.duration}
+                    </div>
+                  </div>
+                  
+                  <p className="text-muted-foreground mb-4 leading-relaxed">
+                    {opportunity.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {opportunity.skills.map((skill) => (
+                      <Badge key={skill} variant="outline" className="text-xs">
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <Button className="flex-1 bg-gradient-hero hover:opacity-90">
+                      <Heart className="w-4 h-4 mr-2" />
+                      Apply Now
+                    </Button>
+                    <Button variant="outline" size="sm">
+                      Learn More
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             ))
           )}
         </div>
