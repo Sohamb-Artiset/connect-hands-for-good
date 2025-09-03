@@ -202,9 +202,11 @@ const Organizations = () => {
           <p className="text-xl mb-8 text-white/90">
             Join our network of verified NGOs and connect with passionate volunteers in your community.
           </p>
-          <Button size="lg" className="bg-white text-primary hover:bg-white/90 px-8">
-            Register Your NGO
-          </Button>
+          <Link to="/ngo-register">
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90 px-8">
+              Register Your NGO
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

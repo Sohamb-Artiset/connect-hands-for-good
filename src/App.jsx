@@ -10,7 +10,9 @@ import Organizations from "./pages/Organizations";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import SignIn from "./pages/SignIn";
+import Register from "./pages/Register";
 import NGOSignIn from "./pages/NGOSignIn";
+import NGORegister from "./pages/NGORegister";
 import GetStarted from "./pages/GetStarted";
 import NotFound from "./pages/NotFound";
 
@@ -32,7 +34,9 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/signin" element={<SignIn />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/ngo-signin" element={<NGOSignIn />} />
+              <Route path="/ngo-register" element={<NGORegister />} />
               <Route path="/get-started" element={<GetStarted />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
